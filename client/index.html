@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <title>Bacon Pie Chart</title>
+    <link rel="stylesheet" href="public/bower_components/framework7/dist/css/framework7.ios.min.css">
+    <link rel="stylesheet" href="public/bower_components/framework7/dist/css/framework7.ios.colors.min.css">
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="js/d3-jetpack.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">   
+  </head>
+  <body>
+    <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+
+    <!-- Views -->
+    <div class="views">
+      <!-- Your main view, should have "view-main" class -->
+      <div class="view view-main">
+        <!-- Top Navbar-->
+        <div class="navbar splash theme-white">
+          <div class="navbar-inner splash" data-page="splash">
+          </div>
+
+          <div class="navbar-inner cached" data-page="index">
+            <div class="center sliding title"><img class="header-logo" src="img/bacon.png" /></div>
+          </div>
+
+          <div class="navbar-inner cached" data-page="results">
+            <div class="left">
+              <a href="#" class="link" onclick="navigateBack()">
+                <i class="icon icon-back"></i>
+                <span>Back</span>
+              </a>
+            </div>
+            <div class="center sliding">Results</div>
+          </div>
+        </div>
+
+        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
+        <div class="pages navbar-through toolbar-through">
+          <!-- Page, "data-page" contains page name -->
+          <div data-page="splash" class="page">
+            <img src="img/splash3.png" width="414" height"736" />
+          </div>
+
+          <div data-page="index" class="page cached">
+            <!-- Scrollable page content -->
+            <div class="page-content">
+              <div class="progress">
+                <span data-progress="0" class="progressbar"></span> 
+              </div>
+              <div class="questionnaire">
+                <div class="question content-block-title"></div>
+                <div class="answers list-block">
+                  <ul></ul>
+                </div>
+              </div>
+
+              <div class="row questionnaire-nav">
+                <div class="col-50">
+                  <a href="#" class="button button-fill button-big button-red" onclick="back()">Previous</a>
+                </div>
+                <div class="col-50">
+                  <a href="#" class="button button-next button-fill button-big button-green" onclick="next(1)">Next</a>
+                </div>
+              </div>
+              <div class="chart" align="center"></div>
+            </div>
+          <div data-page="results" class="page cached">
+            <div class="page-content">
+              <div class="swiper-custom">
+
+                <div class="swiper-container">
+
+                  <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                      <h2 class="center">Blackrock portfolio A</h2>
+                      <div class="result-chart"></div>
+                      <div class="assets">
+                        <div class="content-block-title">Portfolio assets</div>
+                        <div class="list-block">
+                          <ul>
+                            <li class="list-group-title">US Stocks</li>
+                            <li class="item-content">
+                              <div class="item-media"><i class="icon icon-cola"></i></div>
+                              <div class="item-inner">
+                                <div class="item-title">Coca-cola</div>
+                                <div class="item-after">5%</div>
+                              </div>
+                            </li>
+                            <li class="item-content">
+                              <div class="item-media"><i class="icon icon-apple"></i></div>
+                              <div class="item-inner">
+                                <div class="item-title">Apple</div>
+                                <div class="item-after">10%</div>
+                              </div>
+                            </li>
+
+                            <li class="list-group-title">Canadian</li>
+                            <li class="item-content">
+                              <div class="item-media"><i class="icon icon-blackberry"></i></div>
+                              <div class="item-inner">
+                                <div class="item-title">Blackberry</div>
+                                <div class="item-after">5%</div>
+                              </div>
+                            </li>
+                            <li class="item-content">
+                              <div class="item-media"><i class="icon icon-cn"></i></div>
+                              <div class="item-inner">
+                                <div class="item-title">Canadian National Railway stocks</div>
+                                <div class="item-after">5%</div>
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide"><span>Slide 2</span></div>
+                    <div class="swiper-slide"><span>Slide 3</span></div>
+                    <div class="swiper-slide"><span>Slide 4</span></div>
+                    <div class="swiper-slide"><span>Slide 5</span></div>
+                    <div class="swiper-slide"><span>Slide 6</span></div>
+                    <div class="swiper-slide"><span>Slide 7</span></div>
+                  </div>
+
+                  <div class="swiper-pagination"></div>
+                </div>
+
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+              </div> 
+
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div> 
+  </body>
+
+  <script type="text/javascript" src="public/bower_components/framework7/dist/js/framework7.min.js"></script>
+  <script type="text/javascript" src="js/globals.js"></script>
+  <script type="text/javascript" src="js/chart.js"></script>
+  <script type="text/javascript" src="js/questionnaire.js"></script>
+  <script type="text/javascript" src="js/builder.js"></script>
+  <script type="text/javascript" src="js/bacon-portfolio.js"></script>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/hjun1114/baconPortfolio",
+  "authors": [
+    "Francis <francis.beauchampsc@gmail.com>"
+  ],
+  "description": "Bacon portfolio builder",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "framework7": "~1.4.2"
+  }
+}
