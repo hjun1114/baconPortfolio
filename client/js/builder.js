@@ -122,8 +122,15 @@ var Builder = function($$) {
     }
   ]
 
+  var investorProfiles = [
+    { from: 3, to: 37, profile: 'conservative' },
+    { from: 38, to: 46, profile: 'balanced' },
+    { from: 47, to: 55, profile: 'growth' },
+    { from: 56, to: 75, profile: 'aggressive' }
+  ]
+
   // Initialise our questionnaire with a dom accessor and the questions
-  var baconQuestionnaire = BaconQuestionnaire($$, questions);
+  var baconQuestionnaire = BaconQuestionnaire($$, questions, investorProfiles);
 
   // Initialise our chart with a parent and initial size
   var baconChart = BaconPieChart('div.chart', 207);

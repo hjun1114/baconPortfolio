@@ -1,5 +1,6 @@
-var BaconQuestionnaire = function(dom, questions) {
+var BaconQuestionnaire = function(dom, questions, investorProfiles) {
   var $$ = dom;
+  var profiles = investorProfiles;
   var questionList = questions.map(function(question) {
     question.selectedIndex = -1;
     return question;
@@ -33,9 +34,9 @@ var BaconQuestionnaire = function(dom, questions) {
   
   function didSelectAnswer(answer) {
     var index = currentQuestion().values.findIndex(function(element, index, array) {
-      return element == answer; 
+      return element.text == answer; 
     });
-    currentQuestion()['selectedIndex'] = index;
+    currentQuestion().selectedIndex = index;
   }
 
   var numberOfQuestions = function() { return questionList.length; }
@@ -64,24 +65,49 @@ var BaconQuestionnaire = function(dom, questions) {
     // TODO get to the next window, who computes results ?
   }
   
-  var ethicalScore = function() {
+  var result = function() {
+    return {
+      equity: computeEquity(),
+      fixedIncome: computeFixedIncome(),
+      investorProfile: computeInvestorProfile(),
+      ethicalScore: ethicalScore(),
+      investorScore: investorScore()
+    }
+  }
+
+  function ethicalScore() {
     return questions.filter(function (question) {
       return question.tag == 'ethical';
     }).reduce(function (a, b) {
       var nextValue = b.values[b.selectedIndex].value;
       return a + nextValue;
-    });
-  };
+    }, 0);
+  }
 
-  var investorScore = function() {
+  function investorScore() {
     return questions.filter(function (question) {
       return question.tag == 'normal';
     }).reduce(function (a, b) {
       var nextValue = b.values[b.selectedIndex].value;
       return a + nextValue;
     }, 0);
-  };
+  }
 
+  function computeEquity() {
+    return ((investorScore() - 3) / 72 * 80) + 10
+  }
+
+  function computeFixedIncome() {
+    return 100 - computeEquity();
+  }
+
+  function computeInvestorProfile() {
+    var score = investorScore();
+    return investorProfiles.filter(function (profile) {
+      return profile.from <= score && score <= profile.to; 
+    })[0];
+  }
+  
   prepareQuestion();
 
   return {
@@ -90,7 +116,6 @@ var BaconQuestionnaire = function(dom, questions) {
     back: back,
     done: done,
     progress: progress,
-    ethicalScore: ethicalScore,
-    investorScore: investorScore
+    result: result
   };
 }

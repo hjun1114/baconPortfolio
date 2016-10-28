@@ -9,12 +9,16 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
     { label: 'Bleh', value: 15, category: ASSET_CATEGORIES.INT_STOCKS },
     { label: 'Oh', value: 35, category: ASSET_CATEGORIES.FIXED_INCOME }
   ];
-  var mySwiper;
+  var mySwiper = null;
+  var resultData = null;
+
   var disappear = function() {
+    resultData = null;
     setTimeout(function() { mySwiper.slideTo(0); }, 500);
   };
 
   var appear = function() {
+    console.log(resultData);
     resultChart.update(data);
     mySwiper = app.swiper('.swiper-container', {
       pagination: '.swiper-pagination',
@@ -24,10 +28,15 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
       prevButton: '.swiper-button-prev',
     });   
   };
+  
+  var setResult = function(result) {
+    resultData = result;
+  };
 
   return {
     appear: appear,
     disappear: disappear,
-    identifier: '#results'
+    identifier: '#results',
+    setResult: setResult
   }
 };

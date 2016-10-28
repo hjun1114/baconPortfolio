@@ -26,7 +26,8 @@ var IndexViewController = function(dom, appDelegate, navDelegate) {
 
   var next = function() {
     if (builder.questionnaire.progress() == 1) {
-       nav.navigateTo(resultController); // defined in bacon-portfolio
+      resultController.setResult(builder.questionnaire.result());
+      nav.navigateTo(resultController); // defined in bacon-portfolio
     } 
     else {
       builder.test();
