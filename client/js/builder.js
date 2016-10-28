@@ -39,66 +39,85 @@ var Builder = function($$) {
       tag: 'normal',
       text: 'What is your net worth?', 
       values: [
-        'Under 50,000', 
-        '50,000 - 100,000', 
-        '100,000 - 150,000', 
-        '150,000 - 200,000', 
-        'More than 200,000'
+        { text: 'Under 50,000', value: 1 },
+        { text: '50,000 - 100,000', value: 2 },
+        { text: '100,000 - 150,000', value: 4 },
+        { text: '150,000 - 300,000', value: 6 },
+        { text: 'More than 300,000', value: 8 }
       ] 
     }, { 
       tag: 'normal',
       text: 'When will you need the cash invested?', 
       values: [
-        'In less than 5 years', 
-        'In 6 to 10 years', 
-        'In 11 to 15 years', 
-        'In 16 to 20 years',
-        'In more than 20 years'
+        { text: 'In less than 5 years', value: 0 },
+        { text: 'In 6 to 10 years',  value: 1 },
+        { text: 'In 11 to 15 years', value: 2 },
+        { text: 'In 16 to 20 years', value: 4 },
+        { text: 'In 21 to 25 years', value: 5 },
+        { text: 'In more than 25 years', value: 6 }
       ] 
     }, { 
       tag: 'normal',
       text: 'What is your main goal with this portfolio?', 
       values: [
-        'Safety of my money is my first priority', 
-        'Growth without unstable returns', 
-        'Balance between growth and safety', 
-        'My primary concern is growth', 
-        'My sole objective is maximum growth over the long run'
+        { text: 'Safety of my money is my first priority', value: 0 },
+        { text: 'Growth without unstable returns', value: 2 },
+        { text: 'Balance between growth and safety', value: 3 },
+        { text: 'My primary concern is growth', value: 4 },
+        { text: 'My sole objective is maximum growth over the long run', value: 5 }
       ] 
     }, {
       tag: 'normal',
       text: 'Over a 1 year period, what\'s the maximum value loss you could stand?',
       values: [
-        'I don\'t want to loose any money',
-        'Between 1% and 6%',
-        'Between 6% and 11%',
-        'Between 11% and 15%',
-        'Between 15% and 21%'
+        { text: 'I don\'t want to loose any money', value: 0 },
+        { text: 'Between 1% and 6%', value: 1 },
+        { text: 'Between 6% and 11%', value: 6 },
+        { text: 'Between 11% and 15%', value: 12 },
+        { text: 'Between 15% and 21%', value: 16 }
       ]
     }, {
       tag: 'normal',
       text: 'If your investment loose value, how long do you wait to bounce them back?',
       values: [
-        'Less than three months',
-        'Three to six months',
-        'Six month to one year',
-        'One to two years'
+        { text: 'Less than three months', value: 0 },
+        { text: 'Three to six months', value: 4 },
+        { text: 'Six month to one year', value: 8 },
+        { text: 'One to two years', value: 16 }
       ]
     }, {
       tag: 'ethical',
       text: 'How much would you pay for a pack of 100% recycled toilet paper?',
       values: [
-        'I don\' care about recycled toilet paper',
-        'If it\' the same price than regular toilet paper, I would buy it',
-        'I would pay a few more cents for recycled toilet paper',
-        'I would buy the recycled option, no matter what'
+        { text: 'I don\' care about recycled toilet paper', value: 0 },
+        { text: 'If it\' the same price than regular toilet paper, I would buy it', value: 1 },
+        { text: 'I would pay a few more cents for recycled toilet paper', value: 3 },
+        { text: 'I would buy the recycled option, no matter what', value: 4 }
       ]
     }, {
       tag: 'ethical',
       text: 'Would you invest in a company that pollutes if it was a good investment?',
       values: [
-        'Yes',
-        'No'
+        { text: 'Yes', value: 0 },
+        { text: 'No', value: 1 }
+      ]
+    }, {
+      tag: 'ethical',
+      text: 'Would you compromise the returns of the portfolio to avoid investing in unethical companies?',
+      values: [
+        { text: 'No way', value: 0 },
+        { text: 'Yes, but only if the downside in terms of return is minimal', value: 1 },
+        { text: 'Yes, I\'m ready to compromise my return up to a certain point', value: 2 },
+        { text: 'Yes, I would never invest in unethical companies', value: 4 }
+      ]
+    }, {
+      tag: 'ethical',
+      text: 'How likely would you invest in a company based on what they are doing for the planet?',
+      values: [
+        { text: 'I would never do that', value: 0 },
+        { text: 'I might do that', value: 1 },
+        { text: 'That\'s something I would do', value: 2 },
+        { text: 'I only invest in companies that actively making the world a better place', value: 4 }
       ]
     }
   ]
