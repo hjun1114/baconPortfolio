@@ -122,6 +122,11 @@ h1, h2, h3, h4 { color :#414141; }
 .swiper-container {
   height:100%;
 }
+
+.swiper-button-next, .swiper-button-prev {
+  top: 224px;
+}
+
 .swiper-slide {
   background: #fff;
 }

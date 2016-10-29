@@ -1,8 +1,13 @@
-var BaconPieChart = function(container, size) {
+var BaconPieChart = function(container, size, showThermo) {
+  showThermo = typeof showThermo !== 'undefined' ? showThermo : true;
   var container = container;
   var thermoRadius = size;
-  var chartRadius = 0.8 * size;
-  var innerRadius = 0.5 * size;
+
+  var chartMultiplier = showThermo ? 0.8 : 1;
+  var chartRadius = chartMultiplier * size;
+
+  var innerMultiplier = showThermo ? 0.5 : 0.6;
+  var innerRadius = innerMultiplier * size;
   var arcTickness = chartRadius - innerRadius;
   var w = 2 * thermoRadius; // width
   var h = 2 * thermoRadius; // height
@@ -25,16 +30,20 @@ var BaconPieChart = function(container, size) {
   function radToDeg(rad) { return rad * 180 / pi; }
   function degToRad(deg) { return deg * pi / 180; }
 
-  var update = function(newData) {
+  var update = function(newData, thermoScore) {
     data = newData;
-    draw(data);
+    // TODO Remove this and actually fix the update
+    draw([], 13);
+    //
+  
+    draw(data, thermoScore);
 
     indicatorHandle.transition().duration(500).attr('fill', 'transparent');
     tooltipTitle.text(emptyTooltipTitle);
     tooltip.text(emptyTooltipText);
   }
   
-  function draw(data) {
+  function draw(data, thermoScore) {
     var arc = d3.arc()
       .outerRadius(chartRadius)
       .innerRadius(innerRadius);
@@ -43,8 +52,10 @@ var BaconPieChart = function(container, size) {
       .outerRadius(thermoRadius)
       .innerRadius(chartRadius + 5)
       .startAngle(0) // start to the right
-      .endAngle(pi / 2); // end to the top
+      .endAngle(thermoScore * (pi / 2) / 13); // end to the top
 
+    // pi / 2 = 13
+    // x      = thermoScore
     var indicator = d3.arc()
       .outerRadius(40)
       .innerRadius(0)
@@ -52,10 +63,11 @@ var BaconPieChart = function(container, size) {
       .endAngle(pi / 4);
 
     if (!initialised) { // Create these elementso only once
+      var height = showThermo ? h - 0.2 * size : h;
       vis = d3.select(container)
         .append('svg:svg') // create the SVG element inside the <body>
         .attr('width', 414) // set the width and height of our visualization (these will be attributes of the <svg> tag
-        .attr('height', h - 0.2 * size)
+        .attr('height', height)
         .append('svg:g') //make a group to hold our pie chart
         .attr('transform', translate(414/2 - (thermoRadius - chartRadius) / 2, thermoRadius)); // move the center of the pie chart from 0, 0 to radius, radius
       
@@ -150,6 +162,9 @@ var BaconPieChart = function(container, size) {
       .attrTween('d', arcTween);
       */
     path.exit().remove();
+
+    vis.select('.thermo')
+      .attr('d', thermo);
   }
 
   return {

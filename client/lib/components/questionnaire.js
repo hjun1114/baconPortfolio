@@ -39,7 +39,15 @@ var BaconQuestionnaire = function(dom, questions, investorProfiles) {
     currentQuestion().selectedIndex = index;
   }
 
-  var numberOfQuestions = function() { return questionList.length; }
+  function numberOfQuestions() { return questionList.length; }
+  function numberOfEthicalQuestions() {
+    return questionList.filter(function (question) { return question.tag == 'ethical' }).length;
+  }
+
+  function numberOfInvestmentQuestions() {
+    return questionList.filter(function (question) { return question.tag == 'normal' }).length;
+  }
+
   var progress = function() { return (currentQuestionIndex+1) / numberOfQuestions(); }
   var currentQuestion = function() { return questionList[currentQuestionIndex]; }
   var next = function(answerIndex) {
@@ -77,7 +85,7 @@ var BaconQuestionnaire = function(dom, questions, investorProfiles) {
 
   function ethicalScore() {
     return questions.filter(function (question) {
-      return question.tag == 'ethical';
+      return question.tag == 'ethical' && question.selectedIndex != -1;
     }).reduce(function (a, b) {
       var nextValue = b.values[b.selectedIndex].value;
       return a + nextValue;
@@ -86,7 +94,7 @@ var BaconQuestionnaire = function(dom, questions, investorProfiles) {
 
   function investorScore() {
     return questions.filter(function (question) {
-      return question.tag == 'normal';
+      return question.tag == 'normal' && question.selectedIndex != -1;
     }).reduce(function (a, b) {
       var nextValue = b.values[b.selectedIndex].value;
       return a + nextValue;

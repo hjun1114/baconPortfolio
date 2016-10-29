@@ -14,6 +14,16 @@ var Builder = function($$) {
     { label: 'Bleh', value: 25, category: ASSET_CATEGORIES.INT_STOCKS },
     { label: 'Oh', value: 0, category: ASSET_CATEGORIES.FIXED_INCOME }
   ];
+  
+  function shuffle(a) {
+    var j, x, i;
+    for (i = a.length; i; i--) {
+        j = Math.floor(Math.random() * i);
+        x = a[i - 1];
+        a[i - 1] = a[j];
+        a[j] = x;
+    }
+  }
 
   var questions = [{  
       tag: 'normal',
@@ -129,23 +139,33 @@ var Builder = function($$) {
     { from: 56, to: 75, profile: 'aggressive' }
   ]
 
+  // Shuffle our questions
+  shuffle(questions);
+
   // Initialise our questionnaire with a dom accessor and the questions
   var baconQuestionnaire = BaconQuestionnaire($$, questions, investorProfiles);
 
   // Initialise our chart with a parent and initial size
   var baconChart = BaconPieChart('div.chart', 207);
+  
+  function buildDataFromResult(result) {
+    var data = [
+      { label: 'Wow', value: result.equity/3, category: ASSET_CATEGORIES.US_STOCKS }, 
+      { label: 'Ok', value: result.equity/3, category: ASSET_CATEGORIES.CAN_STOCKS }, 
+      { label: 'Bleh', value: result.equity/3, category: ASSET_CATEGORIES.INT_STOCKS },
+      { label: 'Oh', value: result.fixedIncome, category: ASSET_CATEGORIES.FIXED_INCOME }
+    ];
 
-  function test() {
-    baconChart.update(data);
+    return data;
   }
 
-  function test2() {
-    baconChart.update(otherData);
+  function updateChart(data) {
+    var datum = buildDataFromResult(data)
+    baconChart.update(buildDataFromResult(data), data.ethicalScore);
   }
 
   return {
-    test: test,
-    test2: test2,
+    updateChart: updateChart,
     questionnaire: baconQuestionnaire
   }
 }

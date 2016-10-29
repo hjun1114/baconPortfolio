@@ -26,11 +26,14 @@ var IndexViewController = function(dom, appDelegate, navDelegate) {
 
   var next = function() {
     if (builder.questionnaire.progress() == 1) {
-      resultController.setResult(builder.questionnaire.result());
+      var data = builder.questionnaire.result();
+      builder.updateChart(data);
+      resultController.setResult(data);
       nav.navigateTo(resultController); // defined in bacon-portfolio
     } 
     else {
-      builder.test();
+      var data = builder.questionnaire.result();
+      builder.updateChart(data);
       var updateFunction = builder.questionnaire.next;
       updateProgress(updateFunction);
       refreshNextButton(); 
@@ -38,7 +41,8 @@ var IndexViewController = function(dom, appDelegate, navDelegate) {
   }
 
   var back = function() {
-    builder.test2();
+    var data = builder.questionnaire.result();
+    builder.updateChart(data);
     var updateFunction = builder.questionnaire.back;
     updateProgress(updateFunction);
     refreshNextButton();
