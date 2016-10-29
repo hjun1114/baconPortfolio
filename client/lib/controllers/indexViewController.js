@@ -16,7 +16,7 @@ var IndexViewController = function(dom, appDelegate, navDelegate) {
 
   function refreshNextButton() {
     var results = 'Results <i class="icon icon-forward theme-white"></i>'
-    var text = builder.questionnaire.progress() == 1 ? results : 'Next';
+    var text = builder.questionnaire.progress() == 1 ? results : '<i class="icon icon-forward theme-white"></i>';
     $$('.button-next').html(text);
   }
 

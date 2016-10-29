@@ -49,7 +49,7 @@
         <div class="pages navbar-through toolbar-through">
           <!-- Page, "data-page" contains page name -->
           <div data-page="splash" class="page">
-            <img src="img/splash3.png" width="414" height"736" />
+            <img src="img/splash.png" width="414" height"736" />
           </div>
 
           <div data-page="index" class="page cached">
@@ -67,80 +67,29 @@
 
               <div class="row questionnaire-nav">
                 <div class="col-50">
-                  <a href="#" class="button button-fill button-big button-red" onclick="indexController.back()">Previous</a>
+                  <a href="#" class="button-questionnaire-nav button left button-fill button-big button-red" onclick="indexController.back()"><i class="icon icon-back theme-white"></i></a>
                 </div>
                 <div class="col-50">
-                  <a href="#" class="button button-next button-fill button-big button-green" onclick="indexController.next()">Next</a>
+                  <a href="#" class="button-questionnaire-nav button right button-next button-fill button-big button-green" onclick="indexController.next()"><i class="icon icon-forward theme-white"></i></a>
                 </div>
               </div>
               <div class="chart" align="center"></div>
             </div>
-          <div data-page="results" class="page cached">
-            <div class="page-content">
-              <div class="swiper-custom">
+            <div data-page="results" class="page cached">
+              <div class="page-content">
+                <div class="swiper-custom theme-white">
 
-                <div class="swiper-container">
-
-                  <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                      <h2 class="center">Blackrock portfolio A</h2>
-                      <div class="result-chart"></div>
-                      <div class="assets">
-                        <div class="content-block-title">Portfolio assets</div>
-                        <div class="list-block">
-                          <ul>
-                            <li class="list-group-title">US Stocks</li>
-                            <li class="item-content">
-                              <div class="item-media"><i class="icon icon-cola"></i></div>
-                              <div class="item-inner">
-                                <div class="item-title">Coca-cola</div>
-                                <div class="item-after">5%</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-media"><i class="icon icon-apple"></i></div>
-                              <div class="item-inner">
-                                <div class="item-title">Apple</div>
-                                <div class="item-after">10%</div>
-                              </div>
-                            </li>
-
-                            <li class="list-group-title">Canadian</li>
-                            <li class="item-content">
-                              <div class="item-media"><i class="icon icon-blackberry"></i></div>
-                              <div class="item-inner">
-                                <div class="item-title">Blackberry</div>
-                                <div class="item-after">5%</div>
-                              </div>
-                            </li>
-                            <li class="item-content">
-                              <div class="item-media"><i class="icon icon-cn"></i></div>
-                              <div class="item-inner">
-                                <div class="item-title">Canadian National Railway stocks</div>
-                                <div class="item-after">5%</div>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="swiper-slide"><span>Slide 2</span></div>
-                    <div class="swiper-slide"><span>Slide 3</span></div>
-                    <div class="swiper-slide"><span>Slide 4</span></div>
-                    <div class="swiper-slide"><span>Slide 5</span></div>
-                    <div class="swiper-slide"><span>Slide 6</span></div>
-                    <div class="swiper-slide"><span>Slide 7</span></div>
+                  <div class="swiper-container">
+                    <div class="swiper-wrapper"></div>
+                    <div class="swiper-pagination"></div>
                   </div>
 
-                  <div class="swiper-pagination"></div>
-                </div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div> 
 
-                <div class="swiper-button-prev"></div>
-                <div class="swiper-button-next"></div>
-              </div> 
-
+              </div>
             </div>
-          </div>
 
           </div>
         </div>

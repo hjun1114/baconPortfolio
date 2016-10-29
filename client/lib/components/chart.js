@@ -3,10 +3,10 @@ var BaconPieChart = function(container, size, showThermo) {
   var container = container;
   var thermoRadius = size;
 
-  var chartMultiplier = showThermo ? 0.8 : 1;
+  var chartMultiplier = showThermo ? 0.9 : 1;
   var chartRadius = chartMultiplier * size;
 
-  var innerMultiplier = showThermo ? 0.5 : 0.6;
+  var innerMultiplier = showThermo ? 0.7 : 0.8;
   var innerRadius = innerMultiplier * size;
   var arcTickness = chartRadius - innerRadius;
   var w = 2 * thermoRadius; // width
@@ -63,10 +63,10 @@ var BaconPieChart = function(container, size, showThermo) {
       .endAngle(pi / 4);
 
     if (!initialised) { // Create these elementso only once
-      var height = showThermo ? h - 0.2 * size : h;
+      var height = showThermo ? h - 0.1 * size : h;
       vis = d3.select(container)
         .append('svg:svg') // create the SVG element inside the <body>
-        .attr('width', 414) // set the width and height of our visualization (these will be attributes of the <svg> tag
+        .attr('width', 1.9 * size) // set the width and height of our visualization (these will be attributes of the <svg> tag
         .attr('height', height)
         .append('svg:g') //make a group to hold our pie chart
         .attr('transform', translate(414/2 - (thermoRadius - chartRadius) / 2, thermoRadius)); // move the center of the pie chart from 0, 0 to radius, radius
@@ -97,10 +97,11 @@ var BaconPieChart = function(container, size, showThermo) {
         .attr('d', indicator);
 
       // Add thermo
-      vis.append('svg:path')
-        .attr('class', 'thermo')
-        .attr('d', thermo);
-      
+      if (showThermo) {
+        vis.append('svg:path')
+          .attr('class', 'thermo')
+          .attr('d', thermo);
+      }
       initialised = true;
     }
 
@@ -118,7 +119,7 @@ var BaconPieChart = function(container, size, showThermo) {
           current = current.substring(0, current.length - 1);
           if (isNaN(parseFloat(current)) || !isFinite(current)) {
             currentPercentage = d.data.value;
-            tooltipTitle.text(currentPercentage + '%');
+            tooltipTitle.text(parseInt(currentPercentage) + '%');
             return;
           }
 
@@ -163,8 +164,10 @@ var BaconPieChart = function(container, size, showThermo) {
       */
     path.exit().remove();
 
-    vis.select('.thermo')
-      .attr('d', thermo);
+    if (showThermo) {
+      vis.select('.thermo')
+        .attr('d', thermo);
+    }
   }
 
   return {

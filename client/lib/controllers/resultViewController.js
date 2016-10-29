@@ -10,7 +10,7 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
     { label: 'Oh', value: 35, category: ASSET_CATEGORIES.FIXED_INCOME }
   ];
   var portfolioList = [{
-      title: 'Max Growth Portfolio by Blackrock',
+      title: 'Growth portfolio by Blackrock',
       fixedIncome: [],
       usStocks: [],
       canStocks: [
@@ -20,7 +20,7 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
         { title: 'XAW: IShares Core MSCI All Country World ex Canada Index ETF', value: 55 }
       ]
     }, {
-      title: 'Aggressive Growth Portfolio by ModernAvisor',
+      title: 'Growth portfolio by ModernAvisor',
       fixedIncome: [
         { title: 'Vanguard FTSE Canadian Capped REIT ETF', value: 13 },
         { title: 'Vanguard Canadian Short-term Bond ETF', value: 2.9 }
@@ -36,8 +36,8 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
         { title: 'Vanguard FTSE Emerging Markets All Cap Index ET', value: 22.4 }
       ]
     }, {
-      title: 'Aggressive Growth Portfolio by Invisor',
-      fixedIncone: [
+      title: 'Growth portfolio by Invisor',
+      fixedIncome: [
         { title: 'Cash', value: 1 }
       ],
       usStocks: [
@@ -59,32 +59,31 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
 
   var mySwiper = null;
   var resultData = null;
+  var i = 0; 
   
   var chartData = portfolioList.map(buildChartDataFromPortfolio);
   chartData.forEach(function (datum, index) {
     appendResultSliderSlide(datum, portfolioList[index]);
   });
 
-  var i = 0; 
   var charts = [];
   function appendResultSliderSlide(chartData, assetsData) {
     ++i;
-    var resultChart = BaconPieChart('div.result-chart-' + i, 160, false); 
     var container = '<div class="swiper-slide">' +
       '<h2 class="center">' + assetsData.title + '</h2>' +
       '<div class="result-chart-' + i + '"></div>';
     
     var assets = '<div class="assets">' +
       '<div class="content-block-title">Portfolio assets</div>' +
-      '<div class="list-block">' + 
-      '<ul>';
+      '<div class="list-block"><ul>'; 
       
 
     function appendAsset(asset) {
-      assets += '<li class="item-content' +
+      assets += '<li class="item-content">' +
+        //'<div class="item-media"><i class="icon icon-cola"></i></div>' +
         '<div class="item-inner">' +
-        '<div class="item-title">' + stock.title + '</div>' +
-        '<div class="item-after">' + stock.value + '%</div>' +
+          '<div class="item-title">' + asset.title + '</div>' +
+          '<div class="item-after">' + asset.value + '%</div>' +
         '</div></li>';
     };
 
@@ -112,6 +111,9 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
     container += assets;
 
     $$('.swiper-wrapper').append($$(container));
+
+    var resultChart = BaconPieChart('div.result-chart-' + i, 160, false); 
+    resultChart.update(chartData, 0);
   }
 
   function buildChartDataFromPortfolio(portfolio) {
