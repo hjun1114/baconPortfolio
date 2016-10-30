@@ -1,0 +1,225 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html{
+  height: 100%;
+  box-sizing: inherit;
+}
+html {
+    background-color: #fff;
+    color: #6f6969;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+    text-rendering: optimizeLegibility;
+}
+h1{
+  font-family: 'Lato', sans-serif;
+}
+p {
+  font-size: 15px;
+  font-family: 'Lato', sans-serif;
+}
+  /*-----------------Landing Header Page --------------------*/
+.nav-bar{
+  height: 70px;
+  position: absolute;
+  width: 100%;
+}
+.nav-bar a{
+  font-size: 14px;
+  font-family: "lato";
+  color: #fff;
+  margin-right: 20px;
+  line-height: 70px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+.logo {
+  width: 110px;
+  position: absolute;
+  top: 25px;
+  left: 80px;
+}
+.tab-container{
+  text-align: right;
+  float: right;
+}
+.landing-header{
+  height: 100vh;
+  background: -webkit-linear-gradient(left, rgba(0,0,0,0.7), rgba(0,0,0,0.0)), url('images/bg-1.jpg');
+  background: -o-linear-gradient(left, rgba(0,0,0,0.7), rgba(0,0,0,0.0)), url('images/bg-1.jpg');
+  background: linear-gradient(to right, rgba(0,0,0,0.7), rgba(0,0,0,0.0)), url('images/bg-1.jpg');
+  background-size: cover;
+  background-position: center;
+}.row-1 {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: block;
+}
+.hero-box{
+  position: relative;
+  width: 520px;
+  top: 55%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+.hero-box p{
+  color: #fff;
+  padding-left: 10px;
+}
+.hero-message{
+  font-size: 2.5em;
+  line-height: 60px;
+  color: #fff;
+  letter-spacing: 1px;
+  font-family: 'Lato', sans-serif;
+}
+.buttons-box{
+  margin-top: 20px;
+}
+.hero-box a{
+  background:#35aaa2;
+  padding: 10px 25px;
+  border-radius: 20px;
+  color: #fff;
+  font-family: "Lato";
+  margin-top: 20px;
+  font-size: 15px;
+}
+.hero-box .bordered {
+  background: none;
+  border: 2px solid #35aaa2;
+  transition: all 0.5s;
+  padding: 8px 20px;
+}
+.bordered:hover{
+  background: #35aaa2;
+}
+.workflow{
+  width: 30%;
+  display: block;
+  margin: 58px auto;
+}
+.intro-container{
+  background: #235d58;
+  padding-bottom: 80px;
+}
+.intro-container h2{
+  text-transform: uppercase;
+  color: #ffb022;
+  font-size: 30px;
+}
+.intro-container p{
+  color: #fff;
+  text-align: center;
+  font-size: 18px
+}
+.container-1{
+  padding: 70px 0;
+}
+.container-1 img{
+  width: 21%;
+  display: block;
+  margin: 15px auto;
+}
+.text-box h3{
+  font-size: 28px;
+  text-align: center;
+  color: #235d58;
+}
+.text-box p{
+  display: block;
+  max-width: 200px;
+  text-align: center;
+  line-height: 25px;
+  margin: 0 auto;
+}
+.disclaimer{
+  position: absolute;
+  right: 0;
+  left: 0;
+  font-size: 15px;
+  padding-right: 25px;
+}
+.js--waypoint-1{
+  opacity: 0;
+}
+.js--waypoint-1.animated{
+  opacity: 1;
+}
+.js--waypoint-2{
+  opacity: 0;
+}
+.js--waypoint-2.animated{
+  opacity: 1;
+}
+.steps {
+  padding: 30px 0;
+  background: #e2e2e2;
+}
+.steps h2{
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.number{
+
+  margin: 0 auto;
+  width: 56px;
+  height: 56px;
+  display: block;
+  border-radius: 100%;
+  border: 2px solid #59b350;
+  color: #59b350;
+  text-align: center;
+  line-height: 50px;
+  font-size: 22px;
+}
+.steps p{
+  text-align: justify;
+}
+.app-header {
+  font-size: 40px;
+  font-weight: lighter;
+  text-transform: uppercase;
+  text-align: center !important;
+}.limit {
+  width: 50%;
+  text-align: center;
+  margin: 0 auto;
+}
+  /*-----------------Animate--------------------*/
+.animated {
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.fadeInUp {
+  -webkit-animation-name: fadeInUp;
+  animation-name: fadeInUp;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 50%, 0);
+    transform: translate3d(0, 50%, 0);
+  }
+
+  to {
+    opacity: 1;
+    -webkit-transform: none;
+    transform: none;
+  }
+}
+
+@media only screen and (min-width: 800px) and (max-width: 1025px){
+  .hero-box{
+    left: 30%;
+  }
+
+}
