@@ -42,7 +42,7 @@ var Builder = function($$) {
         { text: 'Nothing', value: 0 },
         { text: 'I know what a stock is', value: 2 },
         { text: 'I know a few different ways to invest', value: 4 },
-        { text: 'I can differentiate value and growth investing', value: 6 },
+        { text: 'I know what value and growth investing', value: 6 },
         { text: 'I\'m an investing know-it-all', value: 8 }
       ]
     }, { 
@@ -74,11 +74,11 @@ var Builder = function($$) {
         { text: 'Growth without unstable returns', value: 2 },
         { text: 'Balance between growth and safety', value: 3 },
         { text: 'My primary concern is growth', value: 4 },
-        { text: 'My sole objective is maximum growth over the long run', value: 5 }
+        { text: 'My sole objective is maximum growth', value: 5 }
       ] 
     }, {
       tag: 'normal',
-      text: 'Over a 1 year period, what\'s the maximum value loss you could stand?',
+      text: "Over 1 year, what money loss could you stand?",
       values: [
         { text: 'I don\'t want to loose any money', value: 0 },
         { text: 'Between 1% and 6%', value: 1 },
@@ -88,7 +88,7 @@ var Builder = function($$) {
       ]
     }, {
       tag: 'normal',
-      text: 'If your investment loose value, how long do you wait to bounce them back?',
+      text: 'Your investment loose value. How long do you wait to bounce them?',
       values: [
         { text: 'Less than three months', value: 0 },
         { text: 'Three to six months', value: 4 },
@@ -97,12 +97,12 @@ var Builder = function($$) {
       ]
     }, {
       tag: 'ethical',
-      text: 'How much would you pay for a pack of 100% recycled toilet paper?',
+      text: 'How much would you pay for 100% recycled toilet paper?',
       values: [
-        { text: 'I don\' care about recycled toilet paper', value: 0 },
-        { text: 'If it\' the same price than regular toilet paper, I would buy it', value: 1 },
-        { text: 'I would pay a few more cents for recycled toilet paper', value: 3 },
-        { text: 'I would buy the recycled option, no matter what', value: 4 }
+        { text: 'I don\'t care about recycled toilet paper', value: 0 },
+        { text: 'If it\'s the same price, I would buy it', value: 1 },
+        { text: 'I\'d pay a little more for recycled paper', value: 3 },
+        { text: 'I only buy recycled toilet paper', value: 4 }
       ]
     }, {
       tag: 'ethical',
@@ -113,21 +113,21 @@ var Builder = function($$) {
       ]
     }, {
       tag: 'ethical',
-      text: 'Would you compromise the returns of the portfolio to avoid investing in unethical companies?',
+      text: 'Would you compromise your returns to avoid investing in unethical companies?',
       values: [
         { text: 'No way', value: 0 },
-        { text: 'Yes, but only if the downside in terms of return is minimal', value: 1 },
-        { text: 'Yes, I\'m ready to compromise my return up to a certain point', value: 2 },
-        { text: 'Yes, I would never invest in unethical companies', value: 4 }
+        { text: 'Yes, but only if the downside is minimal', value: 1 },
+        { text: 'Yes, I\'m ready to compromise my return', value: 2 },
+        { text: 'Yes, I\'d never invest in unethical companies', value: 4 }
       ]
     }, {
       tag: 'ethical',
-      text: 'How likely would you invest in a company based on what they are doing for the planet?',
+      text: 'Would you invest in a company based on what they do for the planet?',
       values: [
         { text: 'I would never do that', value: 0 },
         { text: 'I might do that', value: 1 },
         { text: 'That\'s something I would do', value: 2 },
-        { text: 'I only invest in companies that actively making the world a better place', value: 4 }
+        { text: 'Absolutely', value: 4 }
       ]
     }
   ]

@@ -13,6 +13,7 @@ h1, h2, h3, h4 { color :#414141; }
 }
 
 .question {
+  white-space: pre-line !important;
   margin-top: 0;
   color: #fff;
   padding-bottom: 10px;
@@ -170,6 +171,15 @@ h1, h2, h3, h4 { color :#414141; }
 
 label.label-radio input[type=checkbox]:checked~.item-inner, label.label-radio input[type=radio]:checked~.item-inner {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2013%2010'%3E%3Cpolygon%20fill%3D'%2367ff00'%20points%3D'11.6%2C0%204.4%2C7.2%201.4%2C4.2%200%2C5.6%204.4%2C10%204.4%2C10%204.4%2C10%2013%2C1.4%20'%2F%3E%3C%2Fsvg%3E") !important; 
+}
+
+.pages .theme-white i.icon-back, i.icon-back.color-white, i.icon-back.theme-gray {
+ background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M10%2C0l2%2C2l-8%2C8l8%2C8l-2%2C2L0%2C10L10%2C0z'%20fill%3D'%232f958e'%2F%3E%3C%2Fsvg%3E") !important;
+}
+  
+.pages .theme-white i.icon-forward, i.icon-forward.color-white, i.icon-forward.theme-gray {
+  margin-left: 5px;
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2012%2020'%3E%3Cpath%20d%3D'M2%2C20l-2-2l8-8L0%2C2l2-2l10%2C10L2%2C20z'%20fill%3D'%232f958e'%2F%3E%3C%2Fsvg%3E");
 }
 
 .swiper-slide {
