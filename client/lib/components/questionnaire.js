@@ -6,7 +6,7 @@ var BaconQuestionnaire = function(dom, questions, investorProfiles) {
     return question;
   });
   var currentQuestionIndex = 0;
-   
+  var listeners = []; 
   function questionnaireTableViewCell(title, index) {
     var checked = currentQuestion()['selectedIndex'] == index ? 'checked' : '';
     var cell = $$('<label class="label-radio item-content">' +
@@ -32,13 +32,21 @@ var BaconQuestionnaire = function(dom, questions, investorProfiles) {
     });
   }
   
+  function addListener(func) {
+    listeners.push(func);
+  }
+
   function didSelectAnswer(answer) {
     var index = currentQuestion().values.findIndex(function(element, index, array) {
       return element.text == answer; 
     });
     currentQuestion().selectedIndex = index;
+    listeners.forEach(function (func) {
+      func();
+    });
   }
 
+  function currentQuestionAnswered() { return currentQuestion().selectedIndex != -1; }
   function numberOfQuestions() { return questionList.length; }
   function numberOfEthicalQuestions() {
     return questionList.filter(function (question) { return question.tag == 'ethical' }).length;
@@ -124,6 +132,8 @@ var BaconQuestionnaire = function(dom, questions, investorProfiles) {
     back: back,
     done: done,
     progress: progress,
-    result: result
+    result: result,
+    currentQuestionAnswered: currentQuestionAnswered,
+    addListener: addListener
   };
 }
