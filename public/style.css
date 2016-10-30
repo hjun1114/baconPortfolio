@@ -104,7 +104,7 @@ p {
   margin: 58px auto;
 }
 .intro-container{
-  background: rgb(39, 93, 88);
+  background: rgb(45, 157, 150);
   padding-bottom: 80px;
 }
 .intro-container h2{
@@ -128,7 +128,7 @@ p {
 .text-box h3{
   font-size: 28px;
   text-align: center;
-  color: rgb(39, 93, 88);
+  color: rgb(45, 157, 150);
 }
 .text-box p{
   display: block;
