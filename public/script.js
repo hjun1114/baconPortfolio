@@ -5,6 +5,11 @@ $(document).ready(function(){
     }, {
         offset: '75%'
     });
+  $('.js--waypoint-2').waypoint(function(direction){
+        $('.js--waypoint-2').addClass('animated fadeInUp');
+    }, {
+        offset: '75%'
+    });
 });
 
 $(function(){
