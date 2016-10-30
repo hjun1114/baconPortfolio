@@ -8,18 +8,34 @@ var BaconPieChart = function(container, size, showThermo) {
 
   var innerMultiplier = showThermo ? 0.7 : 0.8;
   var innerRadius = innerMultiplier * size;
-  var arcTickness = chartRadius - innerRadius;
+  var arcTickness = showThermo ? chartRadius - innerRadius : chartRadius - innerRadius + 7;
   var w = 2 * thermoRadius; // width
   var h = 2 * thermoRadius; // height
   var pi = Math.PI;
-  var color = d3.scaleOrdinal().domain(['Wow', 'Ok', 'Bleh', 'Oh']).range(['#009AB9', '#129AFF', '#54D6FF', '#ffa850']);
+  /*
+5AE6FF
+
+[7:22]  
+56FF30
+
+[7:23]  
+7D9FFF
+
+[7:23]  
+4987FF
+
+[7:23]  
+305AFC
+  */
+  var color = d3.scaleOrdinal().domain(['Wow', 'Ok', 'Bleh', 'Oh']).range(['#5AE6FF', '#7D9FFF', '#305AFC', '#4987FF']);
   var data = []; 
-  var emptyTooltipText = 'to get more info';
+  var emptyTooltipText = 'to see details';
   var emptyTooltipTitle = 'CLICK';
+  var emptyTooltipSubtitle = 'on the color'
   var initialised = false;
 
   // d3 objects manipulated and other dynamic properties
-  var vis, tooltip, tooltipTitle, indicatorRotation, indicatorHandle, currentPercentage;
+  var vis, tooltip, tooltipTitle, tooltipSubtitle, indicatorRotation, indicatorHandle, currentPercentage;
 
   // String helper functions
   function translate(x, y) { return 'translate(' + x + ',' + y + ')'; }
@@ -41,6 +57,7 @@ var BaconPieChart = function(container, size, showThermo) {
     indicatorHandle.transition().duration(500).attr('fill', 'transparent');
     tooltipTitle.text(emptyTooltipTitle);
     tooltip.text(emptyTooltipText);
+    tooltipSubtitle.text(emptyTooltipSubtitle);
   }
   
   function draw(data, thermoScore) {
@@ -66,10 +83,10 @@ var BaconPieChart = function(container, size, showThermo) {
       var height = showThermo ? h - 0.1 * size : h;
       vis = d3.select(container)
         .append('svg:svg') // create the SVG element inside the <body>
-        .attr('width', 1.9 * size) // set the width and height of our visualization (these will be attributes of the <svg> tag
+        .attr('width', 2 * size) // set the width and height of our visualization (these will be attributes of the <svg> tag
         .attr('height', height)
         .append('svg:g') //make a group to hold our pie chart
-        .attr('transform', translate(414/2 - (thermoRadius - chartRadius) / 2, thermoRadius)); // move the center of the pie chart from 0, 0 to radius, radius
+        .attr('transform', translate(size, thermoRadius)); // move the center of the pie chart from 0, 0 to radius, radius
       
       var innerText = vis.append('svg:g')
         .attr('class', 'innerText');
@@ -77,13 +94,18 @@ var BaconPieChart = function(container, size, showThermo) {
       tooltipTitle = innerText.append('text')
         .attr('text-anchor', 'middle')
         .attr('class', 'inner-tooltip-title')
-        .attr('transform', translate(0, -15))
+        .attr('transform', translate(0, -25))
         .text(emptyTooltipTitle);
+
+      tooltipSubtitle = innerText.append('text')
+        .attr('text-anchor', 'middle')
+        .attr('class', 'inner-tooltip-subtitle')
+        .text(emptyTooltipSubtitle);
 
       tooltip = innerText.append('text')
         .attr('text-anchor', 'middle')
         .attr('class', 'inner-tooltip')
-        .attr('transform', translate(0, 15))
+        .attr('transform', translate(0, 25))
         .text(emptyTooltipText);
 
       indicatorRotation = vis.append('svg:g')
@@ -131,7 +153,9 @@ var BaconPieChart = function(container, size, showThermo) {
       };
 
       tooltipTitle.transition().duration(500).tween('text', textAnimation);
-      tooltip.text(d.data.category);
+      var texts = d.data.category.split(' ');
+      tooltip.text(texts[1]);
+      tooltipSubtitle.text(texts[0]);
 
       var angle = (radToDeg(d.startAngle) + radToDeg(d.endAngle)) / 2 // Get the middle of the arc
       indicatorRotation.transition().duration(500).attr('transform', rotate(angle));

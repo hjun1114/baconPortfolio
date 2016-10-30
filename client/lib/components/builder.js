@@ -146,7 +146,7 @@ var Builder = function($$) {
   var baconQuestionnaire = BaconQuestionnaire($$, questions, investorProfiles);
 
   // Initialise our chart with a parent and initial size
-  var baconChart = BaconPieChart('div.chart', 207);
+  var baconChart = BaconPieChart('div.chart', 165);
   
   function buildDataFromResult(result) {
     var data = [

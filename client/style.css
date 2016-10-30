@@ -6,6 +6,7 @@
 * { font-family: 'sanfrancisco' !important; }
 h1, h2, h3, h4 { color :#414141; }
 .center { text-align: center; }
+.white { color: #fff !important; }
 .header-logo {
   height: 35px;
   margin-top: 12px;
@@ -14,6 +15,9 @@ h1, h2, h3, h4 { color :#414141; }
 .question {
   margin-top: 0;
   color: #fff;
+  padding-bottom: 10px;
+  text-align: center;
+  font-size: 16px;
 }
 
 .answers {
@@ -25,7 +29,7 @@ h1, h2, h3, h4 { color :#414141; }
 }
 
 .answers ul {
-  background-color: transparent !important;
+  background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
 .answers ul label { 
@@ -33,7 +37,9 @@ h1, h2, h3, h4 { color :#414141; }
   padding-right: 15px; 
 }
 
-.answers .item-inner::after {
+.list-block ul:after { background-color: transparent; }
+.list-block ul:before { background-color: rgba(0, 0, 0, 0.2); }
+.answers .item-inner::after, .answers .label::after {
   background-color: rgba(0, 0, 0, 0.2) !important;
 }
 
@@ -47,7 +53,7 @@ h1, h2, h3, h4 { color :#414141; }
 }
 
 .chart { 
-  margin-top: 5px;
+  margin-top: 35px;
 }
 
 .result-chart {
@@ -62,7 +68,6 @@ h1, h2, h3, h4 { color :#414141; }
 .questionnaire {
   /* TODO remove */
   padding-top: 10px;
-  background-color: rgba(0, 0, 0, 0.2);
   /* end TODO */
 }
 
@@ -84,20 +89,26 @@ h1, h2, h3, h4 { color :#414141; }
 }   
 
 .inner-tooltip-title {
-  font-size: 30px;
+  font-size: 22px;
   font-family: Helvetica;
   font-weight: bold;
-  fill: #414141;
+  fill: #fff;
+}
+
+.inner-tooltip-subtitle {
+  font-size: 22px;
+  font-family: Helvetica;
+  fill: #fff;
 }
 
 .inner-tooltip {
-  font-size: 20px;
+  font-size: 22px;
   font-family: Helvetica;
-  fill: #414141;
+  fill: #fff;
 }
 
 .thermo {
-  fill: #00FF0A;
+  fill: #56FF30;
 }
 
 /* Framework 7 specific */
@@ -146,7 +157,7 @@ h1, h2, h3, h4 { color :#414141; }
 }
 
 .swiper-button-next, .swiper-button-prev {
-  top: 224px;
+  top: 200px;
 }
 
 .swiper-button-prev {
@@ -186,10 +197,15 @@ label.label-radio input[type=checkbox]:checked~.item-inner, label.label-radio in
   opacity: 1;
   cursor: pointer;
 }
+
 .swiper-pagination-bullet-active {
   background: #54D6FF;
   border-color: #54D6FF;
 }   
+
+.label-radio.active-state {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
 
 i.icon.icon-blackberry {
   width: 29px;

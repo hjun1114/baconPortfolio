@@ -70,11 +70,11 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
   function appendResultSliderSlide(chartData, assetsData) {
     ++i;
     var container = '<div class="swiper-slide">' +
-      '<h2 class="center">' + assetsData.title + '</h2>' +
-      '<div class="result-chart-' + i + '"></div>';
+      '<h2 class="center white">' + assetsData.title + '</h2>' +
+      '<div class="result-chart-' + i + '" align="center"></div>';
     
     var assets = '<div class="assets">' +
-      '<div class="content-block-title">Portfolio assets</div>' +
+      '<div class="content-block-title white">Portfolio assets</div>' +
       '<div class="list-block"><ul>'; 
       
 
@@ -112,7 +112,7 @@ var ResultViewController = function(dom, appDelegate, navDelegate) {
 
     $$('.swiper-wrapper').append($$(container));
 
-    var resultChart = BaconPieChart('div.result-chart-' + i, 160, false); 
+    var resultChart = BaconPieChart('div.result-chart-' + i, 140, false); 
     resultChart.update(chartData, 0);
   }
 
